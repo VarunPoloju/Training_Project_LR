@@ -1,0 +1,21 @@
+
+  <h6 class="text-center text-dark">Welcome,{{username}}</h6>
+  
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-1">
+            <div id="mySidenav" class="vertical-menu">
+                <a routerLink="myprofile" id="myprofile">My Profile</a>
+                <a routerLink="myaddress" id="myaddress">My Address</a>
+                <a routerLink="wishlist" id="readylist">Wish List</a>
+                <a routerLink="myorders" id="orders">My Orders</a>
+              </div>
+    </div>
+    <div class="col-sm-11">
+        <router-outlet></router-outlet>
+    </div>
+    </div>
+</div>
+<!-- <h1 class="text-center text-primary">Welcome {{username}} </h1> -->
