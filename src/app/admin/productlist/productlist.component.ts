@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/admin.service';
 
 @Component({
   selector: 'app-productlist',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./productlist.component.css']
 })
 export class ProductlistComponent implements OnInit {
-
-  constructor() { }
+  products=[];
+  productsStatus:boolean=false;
+  constructor(private adminservice:AdminService) { }
 
   ngOnInit(): void {
+    this.adminservice.getProducts().subscribe(
+      res=>{
+        if(res["message"]=="empty"){
+              this.productsStatus=true;
+        }
+        if(res["message"]=="nonempty"){
+          this.products=res["products"]
+        }
+      },
+      err=>{
+        alert("Error on fetcing products..Please try again")
+        console.log(err)
+      }
+    )
   }
 
 }

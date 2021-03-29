@@ -1,5 +1,125 @@
  <!-- <div class="container" style="background-color: aqua;">   -->
-<div class="row mt-5 g-3"  >
+<!-- <div class="row mt-0 g-3"  style="background-image: url('https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg') ; background-attachment: fixed;" > -->
+
+
+
+<!-- style="background-image: url('https://i.pinimg.com/originals/af/8d/63/af8d63a477078732b79ff9d9fc60873f.jpg') ; background-attachment: fixed; " -->
+  <div class="container-fluid mt-3"  >
+    <div class="row row-cols-1 row-cols-sm-4 g-4">
+        <div class="col" *ngFor="let product of products" >
+
+            <div class="card h-100 bg-light" style="  border:2px solid black  ;border-radius: 30px;">
+             <!-- <span style="color:green;  " >&#9679; &#8414;</span>  -->
+              <!-- <img src="../../assets/main-qimg-5667b229acf7393e62465dcd05c237f4 (1).svg" alt=""> -->
+               <span class="vegetarianicon mt-2 " style="margin-left: 10px;  ">⊡</span>  
+              
+                <img src={{product.productimage}} class="card-img-top h-50 w-30 p-3 mx-auto"  style="cursor: pointer;"   alt="...">
+                <div class="card-body">
+               <a href="#" style="text-decoration: none; color: black;"> <h3 class="card-title text-center">  {{product.productname }}    </h3> </a>     
+                    <h5 class="card-title" >  <h6>MRP:  <i class="fas fa-rupee-sign"></i>{{product.productprice  }}</h6></h5>
+
+                    <h5 class="card-title">   <h6>Brand: {{product.productbrand | titlecase}}</h6></h5>
+                    <!-- <p class="card-text ">{{product.productdescription}}</p> -->
+                </div>
+                <button class="btn btn-info m-2"  (click)="gotoViewProduct(product.productid)">View</button>
+                <button class="btn btn-primary float-right m-2"  (click)="addToCart(product)">Add to cart</button>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
 <div class="col-sm-3 ">
     <div class="card  " style="width: 18rem; margin-left: 20px;">
         <img src="../../assets/basket.jfif" class="card-img-top" alt="...">
@@ -41,95 +161,4 @@
         </div>
       </div>
 </div>
-</div>
-
-
-<div class="row mt-5 g-3" >
-  <div class="col-sm-3 ">
-      <div class="card  " style="width: 18rem; margin-left: 20px;">
-          <img src="..."  class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-  </div>
-  <div class="col-sm-3">
-      <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-  </div>
-  <div class="col-sm-3">
-      <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-  </div>
-  <div class="col-sm-3">
-      <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-  </div>
-  </div>
-
-
-
-
-
-  <div class="row mt-5 g-3" >
-    <div class="col-sm-3 ">
-        <div class="card  " style="width: 18rem; margin-left: 20px;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-    </div>
-    <!-- </div> -->
+</div> -->

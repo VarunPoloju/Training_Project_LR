@@ -42,7 +42,7 @@ var upload = multer({ storage: storage });
 
 // ------------------------------------------------------------------ROUTES-------------------------------------------
 
-//-------------------------------login
+//-------------------------------login-----------------------------------------
 adminApiObj.post("/login", errorHandler(async (req, res, next) => {
 
     //verify username
@@ -68,6 +68,52 @@ adminApiObj.post("/login", errorHandler(async (req, res, next) => {
 }))
 
 
+// -----------------------------------------add product---------------------------------
+
+//adding new product
+adminApiObj.post("/addproduct",upload.single('photo'),errorHandler(async (req,res,next)=>{
+
+    console.log(req.body)
+    console.log(req.file.path)
+    //find existing product by ID in DB
+    let product=await Product.findOne({productid:req.body.productid})
+    //if product is already existed
+    if(product!=null){
+        res.send({message:"product existed"})
+    }
+    else{
+        //the req.body.userObj is in JSON,so convert to object 
+        req.body=JSON.parse(req.body.userObj) 
+        req.body.productimage=req.file.path;
+        //create product object
+    let newProduct=new Product({
+            productid:req.body.productid,
+            productname:req.body.productname,
+            productbrand:req.body.productbrand,
+            quantity:req.body.quantity,
+            productprice:req.body.productprice,
+            productdescription:req.body.productdescription,
+            productimage:req.body.productimage,
+            countryoforigin:req.body.countryoforigin
+        })
+        await newProduct.save()
+        res.send({message:"New Product added"})
+    }
+}))
+
+
+// ----------------------------------------GET PRODUCTS-----------------------------
+
+//get products
+adminApiObj.get("/products",errorHandler(async (req,res,next)=>{
+    let products=await Product.find();
+    if(products.length==0){
+        res.send({message:"empty"})
+    }
+    else{
+        res.send({message:"nonempty",products:products})
+    }
+}))
 
 
 

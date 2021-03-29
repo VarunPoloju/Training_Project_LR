@@ -16,5 +16,15 @@ export class AdminService {
    }
 
 
+  //  admin added product
+   addNewProduct(formData):Observable<any>{
+    return this.hc.post("/admin/addproduct",formData)
+  }
+
+  // getproducts
+  getProducts():Observable<any>{
+    return this.hc.get("/admin/products")
+  }
+
 
 }

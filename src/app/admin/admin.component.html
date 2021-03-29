@@ -1,4 +1,5 @@
 <button class="btn btn-outline-danger float-end mt-2" (click)="logout()">Logout</button>
+<!-- 
 <div class="row">
     <div class="col-sm-3">
         <ul class="nav flex-column">
@@ -15,4 +16,15 @@
     <div class="col-sm-9">
         <router-outlet></router-outlet>
     </div>
+</div> -->
+
+<div class="row">
+    <div class="col-sm-3">
+    <div class="sidebar ">
+    <a routerLink="addproduct" routerLinkActive="active" > Add Product</a>
+    <a routerLink="productlist" routerLinkActive="active" >Product List</a>
+    
+  </div>
+</div>
+<div class="col-sm-9"><router-outlet></router-outlet></div>
 </div>

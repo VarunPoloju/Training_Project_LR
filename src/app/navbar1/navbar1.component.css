@@ -6,3 +6,12 @@
     border: 1px solid green;
 } */
 
+/* 
+ .kenburns-top {
+	-webkit-animation: kenburns-top 5s ease-in infinite both;
+	        animation: kenburns-top 5s ease-in infinite both;
+} */
+
+a:hover{
+    background-color:crimson;
+}

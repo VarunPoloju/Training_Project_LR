@@ -1,6 +1,6 @@
 #mySidenav a {
     position: absolute; /* Position them relative to the browser window */
-    left: -70px; /* Position them outside of the screen */
+    left: -100px; /* Position them outside of the screen */
     transition: 0.3s; /* Add transition on hover */
     padding: 15px; /* 15px padding */
     width: 150px; /* Set a specific width */
@@ -8,6 +8,7 @@
     font-size: 20px; /* Increase font size */
     color: white; /* White text color */
     border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+  
   }
   
   #mySidenav a:hover {
@@ -16,7 +17,7 @@
   
   /* The about link: 20px from the top with a green background */
   #myprofile {
-    top: 120px;
+    top: 130px;
     background-color: #4CAF50;
   }
   
@@ -35,3 +36,26 @@
     background-color: #555 /* Light Black */
   }
   
+
+.body{
+  background-image: url('https://t4.ftcdn.net/jpg/02/32/16/07/360_F_232160763_FuTBWDd981tvYEJFXpFZtolm8l4ct0Nz.jpg');
+  background-size: cover;
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+  
+.kenburns-bottom {
+	-webkit-animation: kenburns-bottom 5s ease-out both;
+	        animation: kenburns-bottom 5s ease-out both;
+}

@@ -97,7 +97,7 @@ if(this.usercredobj.value == "valid")
           formRef.resetForm();
         }
         if(res["message"]=="user existed"){
-          alert("Username "+userobj.name+ " is already existed.Please choose another")
+          alert("Username "+userobj.username+ " is already existed.Please choose another")
            formRef.resetForm();
         }
       },
