@@ -27,4 +27,6 @@ export class HomecardsComponent implements OnInit {
     )
   }
 
+  
+
 }

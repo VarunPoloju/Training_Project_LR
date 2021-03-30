@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class AddproductComponent implements OnInit {
 
-  constructor(private adminService:AdminService) { }
+  constructor(private adminService:AdminService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +29,13 @@ export class AddproductComponent implements OnInit {
    this.adminService.addNewProduct(this.formData).subscribe(
      res=>{
        alert(res["message"])
+       formRef.resetForm();
+
      },
      err=>{
        alert("Something went wrong in creating new product")
        console.log(err)
+       this.router.navigateByUrl('/productlist')
      }
    )
     }
