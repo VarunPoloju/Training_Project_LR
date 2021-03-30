@@ -28,4 +28,11 @@ export class ProductlistComponent implements OnInit {
     )
   }
 
+
+  
+updatemethod()
+{
+  console.log("hello form product list")
+}
+
 }

@@ -6,6 +6,10 @@ require("dotenv").config()
 const mongoose = require("mongoose")
 
 
+// validate token 
+const validateToken = require('./Backend/Middlewares/VerifyToken')
+
+
 app.use(exp.json())
 
 

@@ -18,4 +18,9 @@ export class UserdashboardComponent implements OnInit {
   }
   
 
+  userLogout(){
+    this.us.logoutUser();
+  }
+
+
 }

@@ -10,6 +10,7 @@ import { DryFruitsComponent } from './dry-fruits/dry-fruits.component';
 import { FloursGrainsComponent } from './flours-grains/flours-grains.component';
 
 import { FooterComponent } from './footer/footer.component';
+import { HdfcComponent } from './hdfc/hdfc.component';
 import { HomeComponent } from './home/home.component';
 import { HomecardsComponent } from './homecards/homecards.component';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +19,9 @@ import { MyordersComponent } from './myorders/myorders.component';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { Navbar1Component } from './navbar1/navbar1.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
+import { OilsGheesComponent } from './oils-ghees/oils-ghees.component';
 import { OthergroceryComponent } from './othergrocery/othergrocery.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
 import { RiceProductsComponent } from './rice-products/rice-products.component';
 import { SaltComponent } from './salt/salt.component';
@@ -31,6 +34,8 @@ const routes: Routes = [
 {path:"register",component:RegisterComponent},
 {path:"home",component:HomeComponent},
 {path:"carousel",component:CarouselComponent},
+{path:"hdfc",component:HdfcComponent},
+{path:"oils-ghees",component:OilsGheesComponent},
 {path:"navbar1",component:Navbar1Component},
 {path:"navbar2",component:Navbar2Component},
 
@@ -70,12 +75,17 @@ const routes: Routes = [
 
 {path:"cart",component:CartComponent},
 
+
+
+
+// 
+{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
 {path:"",redirectTo:"home",pathMatch:"full"},
-{ path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) }
+{path:"**",component:PagenotfoundComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{useHash:true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

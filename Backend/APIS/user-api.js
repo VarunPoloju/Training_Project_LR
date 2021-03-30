@@ -4,6 +4,10 @@ const errorHandler = require("express-async-handler")
 const bcryptjs = require("bcryptjs")
 const jwt=require("jsonwebtoken")
 
+// authorization step 
+// verify token 
+const validateToken = require('../Middlewares/VerifyToken')
+
 
 // model
 const User = require("../Models/User")
@@ -14,7 +18,7 @@ userApiObj.use(exp.json())
 
 // -----------------------------------------------------------------------ROUTES-------------------------------------------------
 
-userApiObj.post("/register", errorHandler(async (req, res, next) => {
+userApiObj.post("/register",errorHandler(async (req, res, next) => {
     //verify user document in db
     let userOfDB = await User.findOne({ username: req.body.username })
 
@@ -59,10 +63,18 @@ userApiObj.post("/login",errorHandler(async (req,res,next)=>{
             res.send({message:"invalidpassword"})
         }
         else{
-            let token=await jwt.sign({username:user.username},process.env.SECRET,{expiresIn:10000})
+            let token=await jwt.sign({username:user.username},process.env.SECRET,{expiresIn:5})
             res.send({message:"success",username:user.username,token:token})
         }
     }
+}))
+
+//------------------------------ get user details by username
+userApiObj.get("/getsingleuserprofiledetail/:username",validateToken,errorHandler(async(req,res,next)=>{
+    let singleUserObj = await User.findOne({username:req.params.username})
+    console.log(singleUserObj)
+    delete singleUserObj.password;
+    res.send({message:singleUserObj})
 }))
 
 
