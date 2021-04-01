@@ -27,6 +27,7 @@ import { RiceProductsComponent } from './rice-products/rice-products.component';
 import { SaltComponent } from './salt/salt.component';
 import { SpicesMasalasComponent } from './spices-masalas/spices-masalas.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
 
@@ -75,6 +76,7 @@ const routes: Routes = [
 
 {path:"cart",component:CartComponent},
 
+{path:"viewproduct/:productid",component:ViewproductComponent},
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -9,7 +10,10 @@ import { AdminService } from 'src/app/admin.service';
 })
 export class AddproductComponent implements OnInit {
 
-  constructor(private adminService:AdminService,private router:Router) { }
+  constructor(private adminService:AdminService,private router:Router,private toaster:ToastrService) { }
+
+  categoryArray=["Dals&Pulses","Flours & Grains","Rice Products","Dry Fruits","Spices & Masalas","Cooking Oils",
+                "Diary Products","Salt,Sugar&Jaggery","Breakfast Sereals","Other Grocery"]
 
   ngOnInit(): void {
   }
@@ -23,19 +27,25 @@ export class AddproductComponent implements OnInit {
   formData=new FormData();
   onSubmit(formRef) { 
     let userObj=formRef.value;
+    // console.log(userObj)
    //adding image and other data to FormData object
     this.formData.append('photo',this.file,this.file.name); 
     this.formData.append("userObj",JSON.stringify(userObj)) 
    this.adminService.addNewProduct(this.formData).subscribe(
      res=>{
-       alert(res["message"])
+        // alert(res["message"])
+        this.toaster.success(res["message"])
+
+      // res["message"]
+
        formRef.resetForm();
 
      },
      err=>{
-       alert("Something went wrong in creating new product")
+       // alert("Something went wrong in creating new product")
+        this.toaster.error("Something went wrong in creating new product")
        console.log(err)
-       this.router.navigateByUrl('/productlist')
+      //  this.router.navigateByUrl('/productlist')
      }
    )
     }

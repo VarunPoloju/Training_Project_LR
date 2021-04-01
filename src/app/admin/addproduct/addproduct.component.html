@@ -6,7 +6,25 @@
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <h1 class="text-center">Product Registration Form</h1>
+
+            
             <form #formRef="ngForm" class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)">
+
+
+                <!-- category -->
+                <div class="form-floating mb-3 mt-2">
+                    <label for="category">Category</label>
+                    <select class="form-select" id="category" name="category" ngModel #category="ngModel" required>
+                       <option value="{{categoryMenu}}" *ngFor="let categoryMenu of categoryArray">{{categoryMenu}}</option>
+                      </select>
+
+                      <!-- validation for category -->
+                      <p *ngIf="(category.touched || formRef.submitted)&&category.errors?.required" class="text-danger">
+                        *Please Select the category</p>
+                     </div>  
+                
+
+
 
                 <!-- product id -->
                 <div class="form-floating mb-3 ">
@@ -114,7 +132,9 @@
 
 
 
-                <button type="submit" class="btn btn-primary d-block mx-auto">Add product</button>
+                 <button type="submit"  class="btn btn-primary d-block mx-auto">Add product</button> 
+
+
 
             </form>
         </div>
@@ -123,3 +143,4 @@
 
 
 </div>
+

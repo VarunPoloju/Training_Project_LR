@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http'
 
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastrModule} from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +39,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
   
 import { AuthorizationService } from './authorization.service';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 // import { DalsPulsesComponent } from './dals-pulses/dals-pulses.component';
 
 
@@ -72,6 +74,7 @@ import { AuthorizationService } from './authorization.service';
     HdfcComponent,
     OilsGheesComponent,
     PagenotfoundComponent,
+    ViewproductComponent,
     
     
  
@@ -81,7 +84,10 @@ import { AuthorizationService } from './authorization.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

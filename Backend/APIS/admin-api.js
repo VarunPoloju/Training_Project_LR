@@ -87,6 +87,7 @@ adminApiObj.post("/addproduct",upload.single('photo'),errorHandler(async (req,re
         req.body.productimage=req.file.path;
         //create product object
     let newProduct=new Product({
+            category:req.body.category,
             productid:req.body.productid,
             productname:req.body.productname,
             productbrand:req.body.productbrand,
@@ -114,6 +115,16 @@ adminApiObj.get("/products",errorHandler(async (req,res,next)=>{
         res.send({message:"nonempty",products:products})
     }
 }))
+
+// get product by product id
+adminApiObj.get("/product/:productid",errorHandler(async (req,res,next)=>{
+    let product=await Product.findOne({productid:req.params.productid})
+    res.send({message:"success",product:product})
+}))
+
+
+
+
 
 
 

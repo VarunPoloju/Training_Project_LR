@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar2',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Navbar2Component implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
+
+  // gotodalspulses(category){
+  //   this.router.navigateByUrl(`/dals-pulses`)
+  // }
 
   
 

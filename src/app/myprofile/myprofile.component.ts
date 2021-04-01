@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class MyprofileComponent implements OnInit {
 
-  constructor(private us:UserService,private router:Router) { }
+  constructor(private us:UserService,private router:Router,private toaster:ToastrService) { }
 username : any;
 userfromBackend;
  
@@ -19,18 +20,24 @@ userfromBackend;
       res=>{
         if(res["message"]=="failed")
         {
-          alert(res["reason"])
-          this.router.navigateByUrl("/home")
+          // alert(res["reason"])
+          this.toaster.error(res["reason"])
+          
+
+          this.router.navigateByUrl("/login")
+          localStorage.clear()
         }
         else{
           this.userfromBackend =  res["message"];
+         
         }
     
     //  console.log("user from backend is",this.userfromBackend)
      
       },
       err=>{
-       alert("Error occured in fetchin Profile details")
+      //  alert("Error occured in fetchin Profile details")
+       this.toaster.error("Error occured in fetching Profile details")
        console.log(err)
 
       }

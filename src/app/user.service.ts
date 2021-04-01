@@ -45,4 +45,16 @@ export class UserService {
     return this.hc.get(`/user/getsingleuserprofiledetail/${username}`)
   }
 
+// -----------------------------CATEGORIES--------------------------
+// getdals(category):Observable<any>{
+//   return this.hc.get(`/product/dals-pulses/${category}`)
+
+// }
+
+
+
+
+
+
+
 }
