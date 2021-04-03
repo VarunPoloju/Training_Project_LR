@@ -49,7 +49,7 @@ getProductById(productid):Observable<any>{
 
   // delete product
   deleteProduct(product:object):Observable<any>{
-    console.log("from delete product",product)
+    console.log("admin from delete product service",product)
     return this.hc.post("/product/removeproduct",product)
   }
 

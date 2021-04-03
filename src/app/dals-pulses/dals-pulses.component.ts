@@ -9,10 +9,24 @@ import { UserService } from '../user.service';
 })
 export class DalsPulsesComponent implements OnInit {
   products=[];
+  dalsarray=[];
   constructor(private userservice:UserService,private router:Router) { }
 
   ngOnInit(): void {
-
+    console.log("hii iam dals")
+    this.userservice.getdals().subscribe(
+      res=>{
+         //  res["message"]
+         this.dalsarray = res["message"]
+         console.log("iam dalspulses",this.dalsarray)
+       
+      
+      },
+      err=>{
+        console.log("error from dals pulses",err)
+      }
+ 
+    )
   //   this.userservice.getdals().subscribe(
   //     res=>{
 
@@ -22,6 +36,8 @@ export class DalsPulsesComponent implements OnInit {
 
   //     }
   //   )
+
+
 
 
    }
@@ -37,6 +53,10 @@ export class DalsPulsesComponent implements OnInit {
     //    // this.router.navigateByUrl("/login")
     
     //   }
+
+   
+     
+  
 
 }
 

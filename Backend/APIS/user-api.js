@@ -53,7 +53,7 @@ userApiObj.post("/register",errorHandler(async (req, res, next) => {
 userApiObj.post("/login",errorHandler(async (req,res,next)=>{
   
     let user=await User.findOne({username:req.body.username})
-    console.log(user)
+    // console.log(user)
     if(user==null){
         res.send({message:"invaliduser"})
     }
@@ -63,7 +63,7 @@ userApiObj.post("/login",errorHandler(async (req,res,next)=>{
             res.send({message:"invalidpassword"})
         }
         else{
-            let token=await jwt.sign({username:user.username},process.env.SECRET,{expiresIn:10000})
+            let token=await jwt.sign({username:user.username},process.env.SECRET,{expiresIn:15})
             res.send({message:"success",username:user.username,token:token})
         }
     }
@@ -72,7 +72,7 @@ userApiObj.post("/login",errorHandler(async (req,res,next)=>{
 //------------------------------ get user details by username
 userApiObj.get("/getsingleuserprofiledetail/:username",validateToken,errorHandler(async(req,res,next)=>{
     let singleUserObj = await User.findOne({username:req.params.username})
-    console.log(singleUserObj)
+    // console.log(singleUserObj)
     delete singleUserObj.password;
     res.send({message:singleUserObj})
 }))

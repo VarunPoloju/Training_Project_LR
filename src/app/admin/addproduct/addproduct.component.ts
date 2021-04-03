@@ -33,7 +33,7 @@ export class AddproductComponent implements OnInit {
     this.formData.append("userObj",JSON.stringify(userObj)) 
    this.adminService.addNewProduct(this.formData).subscribe(
      res=>{
-        // alert(res["message"])
+       //  alert(res["message"])
         this.toaster.success(res["message"])
 
       // res["message"]
@@ -45,7 +45,7 @@ export class AddproductComponent implements OnInit {
        // alert("Something went wrong in creating new product")
         this.toaster.error("Something went wrong in creating new product")
        console.log(err)
-      //  this.router.navigateByUrl('/productlist')
+        this.router.navigateByUrl('/productlist')
      }
    )
     }

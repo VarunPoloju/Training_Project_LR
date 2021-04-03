@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DalsPulsesComponent } from '../dals-pulses/dals-pulses.component';
+import { UserService } from '../user.service';
+import {Observable} from 'rxjs'
 
 @Component({
   selector: 'app-navbar2',
@@ -7,16 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar2.component.css']
 })
 export class Navbar2Component implements OnInit {
-
-  constructor(private router:Router) { }
+dalsarray=[];
+  constructor(private router:Router,private userservice:UserService) { }
 
   ngOnInit(): void {
+   
+      
   }
 
-  // gotodalspulses(category){
+  // gotodals(category){
   //   this.router.navigateByUrl(`/dals-pulses`)
   // }
-
-  
+ 
+ 
 
 }

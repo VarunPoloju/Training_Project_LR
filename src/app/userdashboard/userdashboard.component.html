@@ -1,26 +1,48 @@
 
 <div class="body">
-    
+    <h1 class="text-center p-5">Welcome {{username}}
+      <a routerLink="" (click)="showUserCart()" > <i class="fas fa-shopping-cart  text-danger fa-1x float-end"></i>
+        <sup class="text-dark float-end"> {{userCartSize}} </sup></a> 
+    </h1>
+
+
+
+
+
+
+
+
+
+    <!-- <a routerLink="" (click)="showUserCart()">
+        <h2 class=" fas fa-shopping-cart fa-2x  float-end">
+            <sup class="text-dark float-end">
+              
+            </sup>
+        </h2>
+    </a> -->
+<!-- <i class="fas fa-shopping-cart"></i> -->
     
         <div class="col-md-1">
             <div id="mySidenav" class="vertical-menu">
                 <a routerLink="myprofile" id="myprofile">My Profile</a>
-                <a routerLink="myaddress" id="myaddress">My Address</a>
-                <a routerLink="wishlist" id="readylist">Wish List</a>
-                <a routerLink="myorders" id="orders">My Orders</a>
+                <a href="#" id="myaddress">My Address</a>
+                <!-- <a routerLink="wishlist" id="readylist">Wish List</a> -->
+                <!-- <a routerLink="myorders" id="orders">My Orders</a> -->
               </div>
         </div>
-            <div class="col-md-11">
+            <div class="col-md-5">
                 <router-outlet></router-outlet>
             </div>
-
+           
+                <app-homecards></app-homecards>
+          
   
 
 
 </div>
 
 
- <app-footer></app-footer>
+
 
 
  <!--  <a routerLink="" style="float: right;" (click)="userLogout()">Signout</a> -->

@@ -17,6 +17,7 @@ app.use(exp.json())
 const userApiObj = require("./Backend/APIS/user-api")
 const adminApiObj=require("./Backend/APIS/admin-api")
 const productApiObj = require('./Backend/APIS/product-api')
+const cartApiObj = require("./Backend/APIS/cart-api")
 // const cartApiObj=require("./backend/APIS/cart-api")
 
   app.use(exp.static(path.join(__dirname, 'dist/Final-Project')))
@@ -38,6 +39,7 @@ db.once('open', function () {
 app.use("/user", userApiObj)
  app.use("/admin",adminApiObj)
  app.use("/product",productApiObj)
+ app.use("/cart",cartApiObj)
 
 // app.use("/cart",cartApiObj)
 

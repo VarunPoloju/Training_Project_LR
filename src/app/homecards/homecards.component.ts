@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
+import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
 
 @Component({
@@ -11,7 +12,11 @@ import { UserService } from '../user.service';
 })
 export class HomecardsComponent implements OnInit {
   products=[];
-  constructor(private adminservice:AdminService,private toaster:ToastrService,private router:Router,private userservice:UserService) { }
+  constructor(private adminservice:AdminService,
+              private toaster:ToastrService,
+              private router:Router,
+              private cartService:CartService,
+              private userservice:UserService) { }
 
   ngOnInit(): void {
     // this.adminservice.getProducts().subscribe(
@@ -44,10 +49,40 @@ export class HomecardsComponent implements OnInit {
   gotoViewProduct(productid){
 this.router.navigateByUrl(`/viewproduct/${productid}`)
   }
+
+
   addToCart(product){
     // alert();
-    this.toaster.error("Please login to Proceed With your order")
-    this.router.navigateByUrl("/login")
+    // this.toaster.error("Please login to Proceed With your order")
+    // this.router.navigateByUrl("/login")
+ let username=localStorage.getItem("username");
+ if(username==undefined){
+  this.toaster.error("Please login to Proceed With your order")
+  this.router.navigateByUrl("/login")
+
+}
+else{
+  let selectedProduct={};
+  selectedProduct["username"]=username;
+  selectedProduct["product"]=product;
+
+  console.log(selectedProduct)
+  this.cartService.addToCart(selectedProduct).subscribe(
+    res=>{
+      alert(res["message"])
+      // this.userservice.setCartSize(res["cartsize"])
+       //inform about cartsize to user service
+       this.userservice.setCartSubjectSize(res["cartsize"])
+
+      this.router.navigateByUrl(`/userdashboard/${username}`)
+    },
+    err=>{
+      alert("Error occurred")
+      console.log(err)
+    }
+  )
+  }
+
 
   }
   

@@ -16,11 +16,8 @@ require("dotenv").config()
 // -------------------------------UPDATE PRODUCT---------
 
 productApiObj.put("/updateproduct", errorHandler ( async(req,res,next)=>{
-    // let productCollectionObj=req.app.get("productCollectionObj")
-    // let userObj=req.body;
-    // console.log(userObj) 
-    // let user=await productCollectionObj.findOne({productname:userObj.productname})
-    console.log(req.body)
+    
+    // console.log(req.body)
     let updatedprod = await Product.updateOne(
 
         {productid:req.body.productid},
@@ -34,22 +31,11 @@ productApiObj.put("/updateproduct", errorHandler ( async(req,res,next)=>{
                 productdescription:req.body.productdescription,
                 productimage:req.body.productimage},multi:true}
 
-       
-        
-    
         )
         // res.send({message:updatedprod})
          await updatedprod.save()
         res.send({message:"updated"})
-    // console.log(user)
-    //if product is existed
-    // if(user!==null){
-    //   let success =await productCollectionObj.updateOne({productname:userObj.productname},{$set:{brand:userObj.brand,category:userObj.category,price:userObj.price}})
-    //         res.send({message:"product updated"})
-    // }
-    // else{
-    //     res.send({message:"product not found"})
-    // }      
+   
 
 }))
 
@@ -58,7 +44,8 @@ productApiObj.put("/updateproduct", errorHandler ( async(req,res,next)=>{
 productApiObj.post("/removeproduct", errorHandler( async(req,res,next)=>{
     // let productCollectionObj=req.app.get("productCollectionObj");
     // let userObj=req.body;
-    // console.log(userObj)
+    //  console.log("hello iam admin deleted obj from backend",req.body)
+    //  console.log(req.body.productid)
     let prodtobedeleted = await Product.deleteOne(
         {productid:req.body.productid},
         {$set:
@@ -102,10 +89,62 @@ productApiObj.get("/cardstohome",errorHandler ( async(req,res,next)=>{
 }))
 
 
+// remove product by id in usercart
+
+
+productApiObj.post("/removeprodfromcart",errorHandler(async(req,res,next)=>{
+    console.log("iam from removeprodfromcart is",req.body)
+    let prodtobedeletedfromcart = await Product.deleteMany(
+        {productid:req.body.productid},
+        {
+            $set:{
+                category:req.body.category,
+                productname:req.body.productname,
+                productbrand:req.body.productbrand,
+                productdescription:req.body.productdescription,
+                productimage:req.body.productimage,
+                productprice:req.body.productprice,
+                quantity:req.body.quantity,
+                countryoforigin:req.body.countryoforigin
+
+            },multi:true
+        }
+        )
+        await prodtobedeletedfromcart.save();
+        res.send({message:"Product removed from cart success"})
+}))
 
 
 
 
+// get dals-pulses component
+productApiObj.get("/getproductsofdals",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Dals&Pulses"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+
+// get fours-grains
+productApiObj.get("/getfloursgrains",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Flours & Grains"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get riceproducts
+productApiObj.get("/getriceproducts",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Rice Products"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get dryfruits
+productApiObj.get("/getdryfruits",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Dry Fruits"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
 
 
 

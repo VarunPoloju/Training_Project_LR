@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 import { ProductlistComponent } from '../admin/productlist/productlist.component';
+import { CartService } from '../cart.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-viewproduct',
@@ -11,7 +13,9 @@ import { ProductlistComponent } from '../admin/productlist/productlist.component
 })
 export class ViewproductComponent implements OnInit {
   product :Product;
-  constructor(private acr:ActivatedRoute,private router:Router,private adminservice:AdminService,private toaster:ToastrService) { }
+  constructor(private acr:ActivatedRoute,private userService:UserService,
+              private cartService:CartService,private router:Router,
+              private adminservice:AdminService,private toaster:ToastrService) { }
 
   ngOnInit(): void {
     this.acr.paramMap.subscribe(data=>{
@@ -28,6 +32,37 @@ export class ViewproductComponent implements OnInit {
       )
     })
   }
+
+
+  addProductToCart(product){
+    let username=localStorage.getItem("username");
+    //if no user logged in
+    if(username==undefined){
+      // alert("Please login to continue")
+      this.toaster.error("Please login to continue with your order!!")
+      this.router.navigateByUrl("/login")
+
+    }
+    else{
+    let selectedProduct={};
+    selectedProduct["username"]=username;
+    selectedProduct["product"]=product;
+
+    console.log(selectedProduct)
+    this.cartService.addToCart(selectedProduct).subscribe(
+      res=>{
+        alert(res["message"])
+        this.userService.setCartSize(res["cartsize"])
+        this.router.navigateByUrl(`/userdashboard/${username}`)
+      },
+      err=>{
+        alert("Error occurred")
+        console.log(err)
+      }
+    )
+    }
+  }
+
 
 }
 

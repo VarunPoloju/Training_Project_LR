@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CartService } from '../cart.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +9,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
-  constructor() { }
+   cart=[];
+  constructor(private cartservice:CartService,private userservice:UserService,private toaster:ToastrService) { 
+  }
 
   ngOnInit(): void {
+     this.cart=JSON.parse(localStorage.getItem("userCart"))
+   
+    console.log("cart",this.cart)
   }
+
+
+
+  deleteprodincart(item){
+    // console.log(item)
+    this.userservice.deleteprodfromcart(item).subscribe(
+      res=>{
+        if(res["message"]){
+          this.toaster.success("Product removed successfully from cart")
+        }
+       
+
+      },
+      err=>{
+        this.toaster.error("something went wrong")
+        console.log(err)
+      }
+    )
+
+  }
+
+
+
+ 
 
 }

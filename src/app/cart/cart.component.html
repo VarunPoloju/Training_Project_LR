@@ -1,0 +1,45 @@
+
+<!-- <p class="display-5 text-info text-center">User Cart</p> -->
+
+<!-- <div class="table-responsive mt-5">
+
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <th>Productname</th>
+            <th>Price</th>
+            <th>Description</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart">
+                <td>{{item.product.productname}}</td>
+                <td>{{item.product.productprice}}</td>
+                <td>{{item.product.productdescription}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div> -->
+
+
+
+<div class="row">
+    <h2 class="text-center" style="color: blue;">Shopping cart</h2>
+    <div class="card">
+        <div class="card-body" *ngFor="let item of cart; let i=index"> <hr>
+            <div class="row">
+        <div class="col-sm-6">
+         <img src= {{item.product.productimage}} class="img h-75" alt="">   
+        </div>
+        <div class="col-sm-6">
+          <b style="font-size: 30px;">{{item.product.productname}}</b>   <br>
+         <span>MRP:</span>  <i class="fas fa-rupee-sign"></i>  {{item.product.productprice}} <br>
+            <!-- {{item.product.productdescription}} -->
+            <div class="row mt-4">
+            <div class="col-sm-3">  <button class="btn btn-danger" (click)="deleteprodincart(item)">Delete</button> </div>
+            <div class="col-sm-3">   <button class="btn btn-success ml-3">Checkout</button></div>
+        </div>
+        </div>
+    </div>
+        </div>
+      </div>
+</div>
