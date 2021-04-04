@@ -147,6 +147,49 @@ productApiObj.get("/getdryfruits",errorHandler(async(req,res,next)=>{
 }))
 
 
+// get spicesmasalas
+productApiObj.get("/getspicesmasalas",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Spices & Masalas"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get cooking oils
+productApiObj.get("/getcookingoils",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Cooking Oils"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get Dairy Products
+productApiObj.get("/getdairyproducts",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Diary Products"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get Dairy Products
+productApiObj.get("/getsaltsSugars",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Salt,Sugar&Jaggery"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+// get BreakFast cereals
+productApiObj.get("/getbreakfastcereals",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Breakfast Sereals"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
+
+// get Others array
+productApiObj.get("/getothersarray",errorHandler(async(req,res,next)=>{
+    let dalsproduct = await Product.find({category:"Other Grocery"})
+    // console.log("from api",req.body)
+    res.send({message:dalsproduct})
+}))
+
 
 
 

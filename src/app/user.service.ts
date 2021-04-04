@@ -72,6 +72,47 @@ return this.hc.get("/product/getdryfruits")
 
 
 
+// spices and masalas
+getspicesmasala():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getspicesmasalas")
+}
+
+
+// Cooking oils
+getcookingoils():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getcookingoils")
+}
+
+
+// Cooking oils
+getDairyProducts():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getdairyproducts")
+}
+
+
+// salts and sugars
+getsaltsSugars():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getsaltsSugars")
+}
+
+// Breakfast and cereals
+getbreakfast():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getbreakfastcereals")
+}
+
+
+// Others array
+getothersarray():Observable<any>{
+  // console.log("hi iam floursgrains")
+return this.hc.get("/product/getothersarray")
+}
+
+
 
 
 // ----------------------------USER Cart------------

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-dairyproducts',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dairyproducts.component.css']
 })
 export class DairyproductsComponent implements OnInit {
-
-  constructor() { }
+  dairyarray = [];
+  constructor(private userservice:UserService) { }
 
   ngOnInit(): void {
+    this.userservice.getDairyProducts().subscribe(
+      res=>{
+         //  res["message"]
+         this.dairyarray = res["message"]
+        //  console.log("iam dalspulses",this.riceproductsarray)
+       
+      
+      },
+      err=>{
+        console.log("error from Dairy Products",err)
+      }
+ 
+    )
   }
 
 }
