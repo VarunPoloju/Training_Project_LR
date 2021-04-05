@@ -31,7 +31,7 @@ cartApiObj.post("/add", errorHandler(async (req, res, next) => {
         let userCart = await Cart.find({  username:req.body.username});
 
 
-        res.send({ message: "Product added to cart succuessfully", cartsize: userCart.length })
+        res.send({ message: "Product added to cart successfully", cartsize: userCart.length })
     }
 }))
 

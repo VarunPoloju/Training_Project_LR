@@ -23,7 +23,7 @@ const cartApiObj = require("./Backend/APIS/cart-api")
   app.use(exp.static(path.join(__dirname, 'dist/Final-Project')))
 
 
-mongoose.connect(process.env.DBURL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect("mongodb+srv://project:project@cluster0.wr0ge.mongodb.net/ProjectDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -31,7 +31,7 @@ db.once('open', function () {
     console.log("Connected to DB")
 
     const port = process.env.PORT;
-    app.listen(port, () => console.log(`server on port ${port}`))
+    app.listen(5000, () => console.log("server on port 5000"))
 });
 
 

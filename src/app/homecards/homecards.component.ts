@@ -70,7 +70,9 @@ else{
   console.log(selectedProduct)
   this.cartService.addToCart(selectedProduct).subscribe(
     res=>{
-      alert(res["message"])
+      // alert(res["message"])
+      this.toaster.success(res["message"])
+
       // this.userservice.setCartSize(res["cartsize"])
        //inform about cartsize to user service
        this.userservice.setCartSubjectSize(res["cartsize"])

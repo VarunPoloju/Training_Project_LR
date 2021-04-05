@@ -13,7 +13,7 @@ const validateToken=(req,res,next)=>{
        //get token from bearer token
       let token= tokenWithBearer.slice(7,tokenWithBearer.length)
       //verify token
-      jwt.verify(token,process.env.SECRET,(err,decededToken)=>{
+      jwt.verify(token,"abcdef",(err,decededToken)=>{
 
         if(err){
         res.send({message:"failed",reason:"Session expired"})
