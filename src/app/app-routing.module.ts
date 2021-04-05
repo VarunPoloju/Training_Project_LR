@@ -22,6 +22,7 @@ import { Navbar2Component } from './navbar2/navbar2.component';
 import { OilsGheesComponent } from './oils-ghees/oils-ghees.component';
 import { OthergroceryComponent } from './othergrocery/othergrocery.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { PaymentComponent } from './payment/payment.component';
 import { RegisterComponent } from './register/register.component';
 import { RiceProductsComponent } from './rice-products/rice-products.component';
 import { SaltComponent } from './salt/salt.component';
@@ -65,6 +66,8 @@ const routes: Routes = [
   {path:"wishlist",component:WishlistComponent},
   {path:"myorders",component:MyordersComponent},
 ]},
+
+ {path:"payment",component:PaymentComponent},
 
 // cards component
 {path:"homecards",component:HomecardsComponent},

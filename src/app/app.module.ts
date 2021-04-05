@@ -41,6 +41,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AuthorizationService } from './authorization.service';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { SearchPipe } from './search.pipe';
+import { PaymentComponent } from './payment/payment.component';
 // import { DalsPulsesComponent } from './dals-pulses/dals-pulses.component';
 
 
@@ -77,6 +78,7 @@ import { SearchPipe } from './search.pipe';
     PagenotfoundComponent,
     ViewproductComponent,
     SearchPipe,
+    PaymentComponent,
     
     
  

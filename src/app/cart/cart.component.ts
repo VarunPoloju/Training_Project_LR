@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
@@ -11,8 +12,9 @@ import { UserService } from '../user.service';
 export class CartComponent implements OnInit {
    cart=[];
    sum:number=0;
+   item;
   //  productprice:any;
-  constructor(private cartservice:CartService,private userservice:UserService,private toaster:ToastrService) { 
+  constructor(private cartservice:CartService,private router:Router,private userservice:UserService,private toaster:ToastrService) { 
     
   }
 
@@ -34,20 +36,25 @@ export class CartComponent implements OnInit {
 
 
   deleteprodincart(item){
-    // console.log(item)
-    this.userservice.deleteprodfromcart(item).subscribe(
-      res=>{
-        if(res["message"]){
-          this.toaster.success("Product removed successfully from cart")
-        }
-      },
-      err=>{
-        this.toaster.error("something went wrong")
-        console.log(err)
-      }
-    )
+     console.log(item)
+     this.userservice.deleteprodfromcart(item).subscribe(
+       res=>{
+         if(res["message"]){
+           this.toaster.success("Product removed successfully from cart")
+         }
+       },
+       err=>{
+         this.toaster.error("something went wrong")
+         console.log(err)
+       }
+     )
+
+    
   }
 
+  payment(){
+    this.router.navigateByUrl("/payment")
+  }
 
 
  

@@ -6,6 +6,9 @@ const ProductSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    status:{
+        type:Boolean
+    },
     
     productid:{
         type:Number,

@@ -152,5 +152,17 @@ private cartSubject: BehaviorSubject<any> = new BehaviorSubject(this.cartsize);
       this.cartSubject.next(cartsize);
   }
 
+// -------delete item mukesh
+  deleteItem(item:any):Observable<any>{
+return  this.hc.put("/product/deleteproduct",item)
+  }
+
+
+
+
+
+
+
+
 
 }

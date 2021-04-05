@@ -90,29 +90,35 @@ productApiObj.get("/cardstohome",errorHandler ( async(req,res,next)=>{
 
 
 // remove product by id in usercart
-
-
 productApiObj.post("/removeprodfromcart",errorHandler(async(req,res,next)=>{
     console.log("iam from removeprodfromcart is",req.body)
     let prodtobedeletedfromcart = await Product.deleteOne(
         {productid:req.body.productid},
-        // {
-        //     $set:{
-        //         category:req.body.category,
-        //         productname:req.body.productname,
-        //         productbrand:req.body.productbrand,
-        //         productdescription:req.body.productdescription,
-        //         productimage:req.body.productimage,
-        //         productprice:req.body.productprice,
-        //         quantity:req.body.quantity,
-        //         countryoforigin:req.body.countryoforigin
+         {
+             $set:{
+                 category:req.body.category,
+                 productname:req.body.productname,
+                 productbrand:req.body.productbrand,
+                 productdescription:req.body.productdescription,
+                 productimage:req.body.productimage,
+                 productprice:req.body.productprice,
+                 quantity:req.body.quantity,
+                 countryoforigin:req.body.countryoforigin
 
-        //     }
-        // }
+             },multi:true
+         }
         )
         await prodtobedeletedfromcart.save();
         res.send({message:"Product removed from cart success"})
 }))
+
+// delete item by mukesh
+productApiObj.put("/deleteproduct",errorHandler(async(req,res,next)=>{
+    console.log(req.body);
+    let success = await Product.updateOne({productid:req.body.productid},{status:req.body.status})
+    console.log(success)
+}))
+
 
 
 
