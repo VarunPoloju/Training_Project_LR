@@ -40,6 +40,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
   
 import { AuthorizationService } from './authorization.service';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
+import { SearchPipe } from './search.pipe';
 // import { DalsPulsesComponent } from './dals-pulses/dals-pulses.component';
 
 
@@ -75,6 +76,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
     OilsGheesComponent,
     PagenotfoundComponent,
     ViewproductComponent,
+    SearchPipe,
     
     
  

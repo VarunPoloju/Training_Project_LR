@@ -20,7 +20,7 @@
 
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="" id="logout" (click)="logoutuser()" id="logout"  *ngIf="logStatus"  style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;" >Logout </a>
+          <a class="nav-link" routerLink="" id="logout"  (click)="logoutuser()" id="logout"  *ngIf=" logoff()" style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;" >Logout </a>
         </li>
 
 
@@ -31,7 +31,7 @@
   <!-----------------------------------------------------------------------LOGIN------------------------------------------------------->
            
   <li class="nav-item">
-    <a class="nav-link"  *ngIf="!logStatus"  id="login" routerLink="login"   style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;" > Login</a>
+    <a class="nav-link" *ngIf="!logoff()"    id="login" routerLink="login"   style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;" > Login</a>
 </li>
 
 
@@ -61,7 +61,7 @@
 <!-- -----------------------------------------------------------------REGISTER---------------------------------------------------------- -->
 
      <li class="nav-item">
-   <a class="nav-link" routerLink="register" *ngIf="!logStatus" id="register"  style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;">Register</a> 
+   <a class="nav-link" routerLink="register" *ngIf=" !logoff()" id="register"  style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;">Register</a> 
    <!-- <a class="nav-link" href="#"   *ngIf="logStatus" id="register" data-bs-toggle="modal" data-bs-target="#myModal" style="color: black;font-size: 20px;font-weight: bold; font-family: 'Courgette', cursive;color: black;">Register</a>    -->
       <!-------------------- modal ------------------>
    
@@ -82,7 +82,7 @@
  
  
              <div class="input-group md-form form-md form-2 pl-0">
-               <input class="form-control my-0 py-1 amber-border" type="text" placeholder="Search" style="font-size: 15px;" aria-label="Search">
+               <input class="form-control my-0 py-1 amber-border" type="text" [(ngModel)]="searchTerm" placeholder="Search By Name" style="font-size: 15px;" aria-label="Search">
                <div class="input-group-append">
                  <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search fa-2x text-dark"
                                                                                     aria-hidden="true"> </i></span>

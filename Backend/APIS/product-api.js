@@ -94,21 +94,21 @@ productApiObj.get("/cardstohome",errorHandler ( async(req,res,next)=>{
 
 productApiObj.post("/removeprodfromcart",errorHandler(async(req,res,next)=>{
     console.log("iam from removeprodfromcart is",req.body)
-    let prodtobedeletedfromcart = await Product.deleteMany(
+    let prodtobedeletedfromcart = await Product.deleteOne(
         {productid:req.body.productid},
-        {
-            $set:{
-                category:req.body.category,
-                productname:req.body.productname,
-                productbrand:req.body.productbrand,
-                productdescription:req.body.productdescription,
-                productimage:req.body.productimage,
-                productprice:req.body.productprice,
-                quantity:req.body.quantity,
-                countryoforigin:req.body.countryoforigin
+        // {
+        //     $set:{
+        //         category:req.body.category,
+        //         productname:req.body.productname,
+        //         productbrand:req.body.productbrand,
+        //         productdescription:req.body.productdescription,
+        //         productimage:req.body.productimage,
+        //         productprice:req.body.productprice,
+        //         quantity:req.body.quantity,
+        //         countryoforigin:req.body.countryoforigin
 
-            },multi:true
-        }
+        //     }
+        // }
         )
         await prodtobedeletedfromcart.save();
         res.send({message:"Product removed from cart success"})

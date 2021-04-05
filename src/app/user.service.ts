@@ -26,6 +26,12 @@ export class UserService {
   }
 
 
+  // --------------search pipe----------------------------------------------------
+  getdatafromoutside():Observable<any>{
+    return this.hc.get("/product/cardstohome")
+  }
+
+
   // logout
   logoutUser(){
     localStorage.clear();

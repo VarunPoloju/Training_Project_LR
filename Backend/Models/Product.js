@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 const ProductSchema=new mongoose.Schema({
-
-
+    
+   
     category:{
         type:String,
         required:true

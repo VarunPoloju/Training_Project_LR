@@ -12,6 +12,8 @@ import { UserService } from '../user.service';
 })
 export class HomecardsComponent implements OnInit {
   products=[];
+  searchTerm:string;
+  dataArray=[];
   constructor(private adminservice:AdminService,
               private toaster:ToastrService,
               private router:Router,
@@ -19,18 +21,7 @@ export class HomecardsComponent implements OnInit {
               private userservice:UserService) { }
 
   ngOnInit(): void {
-    // this.adminservice.getProducts().subscribe(
-    //   res=>{
-    //     if(res["message"]=="nonempty"){
-    //     this.products=res["products"]
-    //     console.log(this.products)
-    //     }
-    //   },
-    //   err=>{
-    //     alert("error occurred")
-    //     console.log(err)
-    //   }
-    // )
+  
 
       this.adminservice.getproduct().subscribe(
         res=>{
@@ -42,6 +33,16 @@ export class HomecardsComponent implements OnInit {
         }
       )
 
+
+      this.userservice.getdatafromoutside().subscribe(
+        res=>{
+          this.dataArray=res;
+        },
+        err=>{
+          alert("something went wrong")
+          console.log(err)
+        }
+      )
 
   }
 

@@ -30,6 +30,7 @@ export class UserdashboardComponent implements OnInit {
     // this.username=localStorage.getItem("username")["username"]
 
     this.userService.getInitialCartSize( this.username).subscribe(
+      
       res=>{
 
         this.userService.setCartSubjectSize(res["cartsize"])

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 // import * as EventEmitter from 'node:events';
 import { Subscription } from 'rxjs';
 import { AdminService } from '../admin.service';
@@ -19,16 +20,33 @@ export class Navbar1Component implements OnInit {
   logStatus:boolean;
  usercredobj;
   $subs: Subscription;
+
+  
+  searchTerm:string;
+  dataArray=[];
  
  
 
-  constructor(private us:UserService ,private router:Router,private adminservice:AdminService) { }
+  constructor(private us:UserService ,private toaster:ToastrService,private router:Router,private adminservice:AdminService) { }
 
   ngOnInit(): void {
     
     this.$subs = this.us.receiveLoginState().subscribe(d=>{
       this.logStatus=d;
     })
+
+    // search pipe
+    this.us.getdatafromoutside().subscribe(
+      res=>{
+        this.dataArray = res;
+      },
+      err=>{
+        this.toaster.error("Something went wrong in searching")
+        console.log("from navbar1",err)
+      }
+    )
+
+
   }
 
   // added today
@@ -36,6 +54,9 @@ export class Navbar1Component implements OnInit {
     return localStorage.getItem('token')
   }
 
+  logoff(){
+    return localStorage.getItem('token')
+  }
 
 
   ngOnDestroy(){
@@ -46,6 +67,7 @@ export class Navbar1Component implements OnInit {
 logoutuser(){
   localStorage.removeItem('token')
   localStorage.removeItem('username')
+  localStorage.removeItem('userCart')
   this.logStatus = false;
   this.router.navigateByUrl("/home")
 }
