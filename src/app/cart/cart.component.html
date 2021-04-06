@@ -24,7 +24,8 @@
 
 <div class="row">
     <h2 class="text-center" style="color: blue;">Shopping cart</h2>
-    <div class="card">
+    <div class="text" *ngIf="cart.length===0"><img src="https://lh3.googleusercontent.com/proxy/biSS4vmwbSR7-owmMRsamt2ztPhFTwMjS4VAP1_O_Kve_dDvzu4ryi5bSOkIV3H_Gr-8Hx2iMrsed4pt4b21kfSjJIVj2cRFf-Gtcw" class="img d-block mx-auto" alt=""></div>
+    <div class="card" *ngIf="cart.length>0">
         <div class="card-body" *ngFor="let item of cart; let i=index"> <hr>
             <div class="row">
         <div class="col-sm-6">

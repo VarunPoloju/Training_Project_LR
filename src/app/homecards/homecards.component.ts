@@ -33,7 +33,7 @@ export class HomecardsComponent implements OnInit {
         }
       )
 
-
+// search pipe code
       this.userservice.getdatafromoutside().subscribe(
         res=>{
           this.dataArray=res;
