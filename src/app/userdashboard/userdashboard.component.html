@@ -1,27 +1,44 @@
 
 <div class="body">
     <h1 class="text-center p-5">Welcome {{username}}
-      <a routerLink="" (click)="showUserCart()" > <i class="fas fa-shopping-cart  text-danger fa-1x float-end"></i>
-        <sup class="text-dark float-end"> {{userCartSize}} </sup></a> 
-    </h1>
+
+        <div class="p-1 bg-dark rounded rounded-pill shadow-sm mb-4 w-50 mx-auto demo">
+            <div class="input-group">
+                <input type="search" style="border:1px solid black;border-radius: 25px ;" class=" form-control  bg-light "  placeholder="Search By Name.." [(ngModel)]="searchTerm" >
+
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-link text-primary mb-1" id="button-addon1" ><i class="fa fa-search fa-2x"></i></button>
+                </div>
+            </div>
+
+        </div>
 
 
-
-
-
-
-
-
-
-    <!-- <a routerLink="" (click)="showUserCart()">
-        <h2 class=" fas fa-shopping-cart fa-2x  float-end">
-            <sup class="text-dark float-end">
-              
-            </sup>
-        </h2>
-    </a> -->
-<!-- <i class="fas fa-shopping-cart"></i> -->
+        <a routerLink="" (click)="showUserCart()" > <i class="fas fa-shopping-cart  text-danger fa-1x float-end"></i>
+            <sup class="text-dark float-end"> {{userCartSize}} </sup></a> 
+        </h1>
     
+    
+
+
+
+       
+     
+        <!-- <input type="search"  class="form-control my-0 py-1 amber-border float-end ml-2" placeholder="Search By Name" [(ngModel)]="searchTerm" style="width: 25%; font-size: 15px;"> -->
+        <!-- <div class="input-group-append">
+            <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search fa-2x text-dark"aria-hidden="true"> </i></span>
+        </div> -->
+
+
+     
+
+
+
+
+
+
+
+   
         <div class="col-md-1">
             <div id="mySidenav" class="vertical-menu">
                 <a routerLink="myprofile" id="myprofile">My Profile</a>
@@ -34,15 +51,39 @@
                 <router-outlet></router-outlet>
             </div>
            
-                <app-homecards></app-homecards>
+                <!-- <app-homecards></app-homecards> -->
           
+            
+ <div class="container-fluid mt-4"  >
+    <div class="row row-cols-1 row-cols-sm-4 g-4" style="justify-content: center;">
+     
+        <div class="col" *ngFor="let product of products | search:searchTerm" >
   
-
-
+            <div class="card h-100 bg-light" style="  border:2px solid black  ;border-radius: 30px;">
+          
+               <span class="vegetarianicon mt-2 " style="margin-left: 10px;  ">⊡</span>  
+              
+                <img src={{product.productimage}} class="card-img-top  p-3 mx-auto"  style="cursor: pointer; height: 200px; width: 160px;"   alt="...">
+                <div class="card-body">
+               <a href="#" style="text-decoration: none; color: black;"> <h3 class="card-title text-center" style="font-family: 'Nanum Myeongjo', serif;">  {{product.productname }}    </h3> </a>     
+                    <h5 class="card-title" >  <h6>MRP:  <i class="fas fa-rupee-sign"></i>{{product.productprice  }}</h6></h5>
+  
+                    <!-- <h5 class="card-title">   <h6>Brand: {{product.productbrand | titlecase}}</h6></h5> -->
+                    <h5 class="card-title">   <h6>Description: {{product.productdescription | titlecase}}</h6></h5>
+                    
+                </div>
+                <div class="btn btn-toolbar" style="justify-content: space-between;">
+                <button class="btn  m-2"  style="width: max-content; background-color: red; color: white; border-radius: 3px solid red; border:15px" (click)="gotoViewProduct(product.productid)"><i class="far fa-eye-slash"></i>View</button>
+                <button class="btn  float-right m-2" style="width: max-content;background-color:darkblue; color: white; border-radius: 3px solid darkblue; border:15px"  (click)="addToCart(product)"><i class="fas fa-shopping-cart"></i>  Add to cart</button>
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
 </div>
 
 
 
 
 
- <!--  <a routerLink="" style="float: right;" (click)="userLogout()">Signout</a> -->
+ 

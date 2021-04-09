@@ -1,20 +1,26 @@
-const mongoose=require("mongoose")
+const mongoose=require("mongoose");
+
 const ProductSchema=new mongoose.Schema({
     
-   
+    username:{type:String},
+ 
+    // _id:{type:String},
     category:{
         type:String,
         required:true
     },
+   
     status:{
         type:Boolean
     },
+  
     
     productid:{
         type:Number,
-        required:true
+        required:true,
+      
     },
-    productname:{
+   productname:{
         type:String,
         required:true
     },
@@ -24,7 +30,7 @@ const ProductSchema=new mongoose.Schema({
     },
     quantity:{
         type:Number,
-        required:true
+        // required:true
     },
     productprice:{
         type:Number,

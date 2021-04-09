@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CheckoutService } from '../checkout.service';
 
 @Component({
   selector: 'app-payment',
@@ -8,19 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentComponent implements OnInit {
   cart=[];
   sum:number=0;
-  constructor() { }
+  constructor(private chckout:CheckoutService) { }
 
   ngOnInit(): void {
-    this.cart=JSON.parse(localStorage.getItem("userCart"))
+    this.sum = this.chckout.getSum()
+    console.log(this.sum)
      
-    console.log("cart",this.cart)
-
-    for(let i=0;i<this.cart.length;i++){
-      this.sum = this.sum+this.cart[i].product.productprice
-
-      
-      console.log("from sum is",this.sum)
-    }
+   
+   
   }
 
+
+  onSubmit(formRef){
+
+  }
 }

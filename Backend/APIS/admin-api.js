@@ -91,7 +91,8 @@ adminApiObj.post("/addproduct",upload.single('photo'),errorHandler(async (req,re
             productid:req.body.productid,
             productname:req.body.productname,
             productbrand:req.body.productbrand,
-            quantity:req.body.quantity,
+            // quantity:1,
+
             productprice:req.body.productprice,
             productdescription:req.body.productdescription,
             productimage:req.body.productimage,

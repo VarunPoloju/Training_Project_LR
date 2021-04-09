@@ -19,43 +19,66 @@
         <div class="tab-content">
         <div class="tab-pane fade show active" id="nav-tab-card">
              
-            <form role="form" class="needs-validation" novalidate>
+            <form #formRef="ngForm"  class="form" (ngSubmit)="formRef.form.valid&&onSubmit(formRef)" novalidate>
+
+
             <div class="form-group">
                 <label for="username" class="form-label"> Full name (on the card)</label>
-                <input type="text" class="form-control " name="username" placeholder="" ngModel required>
-            </div> <!-- form-group.// -->
+                <input type="text" class="form-control " id="username" value="username" name="username" #ref1="ngModel" placeholder="Please enter Full name" ngModel required>
+
+                <!-- validation for full name on card -->
+                <div class="text" style="color: red; " *ngIf="(ref1.touched || formRef.submitted) && (ref1.errors?.required)">
+                    *Full name is required </div>
+            </div> 
         
             <div class="form-group">
-                <label for="cardNumber">Card number</label>
+                <label for="cardNumber" class="form-label">Card number</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" name="cardNumber" required ngModel placeholder="">
+                    <input type="text" class="form-control" id="cardNumber" value="cardnumber" #ref2="ngModel"  name="cardNumber" required ngModel placeholder="Please Enter The Card Number">
+
+
                     <div class="input-group-append">
                         <span class="input-group-text text-muted">
                             <i class="fab fa-cc-visa"></i>   <i class="fab fa-cc-amex"></i>   
-                            <i class="fab fa-cc-mastercard"></i> 
+                            <i class="fab fa-cc-mastercard"></i>
                         </span>
-                    </div>
+                    </div> 
+
+                        <!-- validation for card number -->
+                        <div class="text" style="color: red; " *ngIf="(ref2.touched || formRef.submitted) && (ref2.errors?.required)">
+                            *Card Number is required </div>
+                        
+
                 </div>
-            </div> <!-- form-group.// -->
+            </div> 
         
             <div class="row">
                 <div class="col-sm-8">
                     <div class="form-group">
                         <label><span class="hidden-xs">Expiration</span> </label>
                         <div class="input-group">
-                            <input type="number" class="form-control" required placeholder="MM" name="">
-                            <input type="number" class="form-control" required placeholder="YY" name="">
+                            <input type="number" name="mm" ngModel #ref3="ngModel" class="form-control" required placeholder="MM" >
+                            <input type="number" name="yy" ngModel #ref4="ngModel" class="form-control" required placeholder="YY">
                         </div>
+
+                        <!-- validation for card -->
+                        <div class="text" style="color: red;" *ngIf="(ref3.touched || formRef.submitted) && (ref3.errors?.required)">
+                            *MM Number is required </div>
+
+                            <div class="text" style="color: red;" *ngIf="(ref4.touched || formRef.submitted) && (ref4.errors?.required)">
+                                *YY Number is required </div>
+                        
+
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label data-toggle="tooltip" title="" data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
+                        <label data-toggle="tooltip" title=""  data-original-title="3 digits code on back side of the card">CVV <i class="fa fa-question-circle"></i></label>
                         <input type="number" required class="form-control">
                     </div> <!-- form-group.// -->
                 </div>
             </div> <!-- row.// -->
-            <button class="subscribe btn btn-primary d-block mx-auto mt-4" type="button"> Confirm  </button>
+            <button class="subscribe btn btn-primary d-block mx-auto mt-4" type="submit"> Confirm  </button>
             </form>
         </div> <!-- tab-pane.// -->
         <div class="tab-pane fade" id="nav-tab-paypal">

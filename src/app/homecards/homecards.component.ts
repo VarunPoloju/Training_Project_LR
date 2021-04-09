@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AdminService } from '../admin.service';
 import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
-
+import {SearchPipe} from '../search.pipe';
 @Component({
   selector: 'app-homecards',
   templateUrl: './homecards.component.html',
@@ -12,8 +12,9 @@ import { UserService } from '../user.service';
 })
 export class HomecardsComponent implements OnInit {
   products=[];
-  searchTerm:string;
-  dataArray=[];
+   searchTerm:string;
+   searchobj=[];
+  // dataArray=[];
   constructor(private adminservice:AdminService,
               private toaster:ToastrService,
               private router:Router,
@@ -34,15 +35,15 @@ export class HomecardsComponent implements OnInit {
       )
 
 // search pipe code
-      this.userservice.getdatafromoutside().subscribe(
-        res=>{
-          this.dataArray=res;
-        },
-        err=>{
-          alert("something went wrong")
-          console.log(err)
-        }
-      )
+      // this.userservice.getdatafromoutside().subscribe(
+      //   res=>{
+      //     this.dataArray=res;
+      //   },
+      //   err=>{
+      //     alert("something went wrong")
+      //     console.log(err)
+      //   }
+      // )
 
   }
 

@@ -5,7 +5,7 @@ require("dotenv").config()
 
 const mongoose = require("mongoose")
 
-
+// mongoose.set('useFindAndModify', false);
 // validate token 
 const validateToken = require('./Backend/Middlewares/VerifyToken')
 

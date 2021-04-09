@@ -19,25 +19,41 @@
     </table>
 
 </div> -->
-
-
-
+<!-- https://lh3.googleusercontent.com/proxy/AVm5TsXlP1_8J1JiP4iQCRIwSU6T6YKeUyKI7ik0HB0wxmCQp7FYS28OxpCAi5jL9wDQBlAS5SFXKswStQ8_tjH1 -->
+ <div class="body"> 
 <div class="row">
-    <h2 class="text-center" style="color: blue;">Shopping cart</h2>
-    <div class="text" *ngIf="cart.length===0"><img src="https://lh3.googleusercontent.com/proxy/biSS4vmwbSR7-owmMRsamt2ztPhFTwMjS4VAP1_O_Kve_dDvzu4ryi5bSOkIV3H_Gr-8Hx2iMrsed4pt4b21kfSjJIVj2cRFf-Gtcw" class="img d-block mx-auto" alt=""></div>
+    <h2 class="text-center " style="color: blue; "> Shopping cart</h2>
+    <div class="text" *ngIf="cart.length===0"><img src="../../assets/cartempty.jpeg" class="img d-block mx-auto" alt=""></div>
     <div class="card" *ngIf="cart.length>0">
-        <div class="card-body" *ngFor="let item of cart; let i=index"> <hr>
-            <div class="row">
-        <div class="col-sm-6">
-         <img src= {{item.product.productimage}} class="img h-75" alt="">   
+        <div class="card-body"  *ngFor="let item of cart; let i=index"> <hr>
+            <div class="row " >
+        <div class="col-sm-4">
+         <img src= {{item.productimage}} class="img h-75" alt="">   
         </div>
-        <div class="col-sm-6">
-          <b style="font-size: 30px;">{{item.product.productname}}</b>   <br>
-         <span>MRP:</span>  <i class="fas fa-rupee-sign"></i>  {{item.product.productprice}} <br>
+        <div class="col-sm-8">
+          <b style="font-size: 30px;">{{item.productname}}</b>   <br>
+
+          
+          <!-- <b style="font-size: 30px;">{{item.product._id}}</b>   <br> -->
+          <!-- <b style="font-size: 30px;">{{item.product.productid}}</b>   <br> -->
+
+
+
+         <span>MRP:</span>  <i class="fas fa-rupee-sign"></i>  {{item.productprice}} <br>
             <!-- {{item.product.productdescription}} -->
-            <div class="row mt-4">
-            <div class="col-sm-3">  <button class="btn btn-danger" (click)="deleteprodincart(item)">Delete</button> </div>
-            <div class="col-sm-3">   <button class="btn btn-success ml-3"  (click)="payment()">Checkout</button></div>
+            <div class="row mt-4" >
+                <div class="col-sm-3"><button type="button" class="minus bg-danger" style="width: max-content; font-size: 20px; size: 50px;" (click)="minus(item)">-</button> </div>
+                <div class="col-sm-6"><h2 class="text">Quantity:  {{item.quantity}}</h2></div>
+                <div class="col-sm-3"> <button type="button" class="minus bg-success" style="width: max-content;" (click)="plus(item)">+</button></div>
+                <!-- <div class="inline" style="display:flex;">
+               
+               
+               
+               
+            </div> -->
+            <!-- (click)="deleteprodincart(item)" -->
+            <div class="col-sm-3">  <button class="btn btn-danger mt-3" (click)="deleteprodincart(item)">Delete</button> </div>
+            <div class="col-sm-3">   <button class="btn btn-success ml-3 mt-3"  (click)="payment()">Checkout</button></div>
         </div>
         </div>
     </div>
@@ -45,4 +61,4 @@
       </div>
                    <h2 class="text-center">Total Price is : {{sum}}</h2>
 </div>
-
+ </div> 

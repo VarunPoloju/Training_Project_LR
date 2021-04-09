@@ -23,7 +23,7 @@ export class Navbar1Component implements OnInit {
 
   
   searchTerm:string;
-  dataArray=[];
+  products=[];
  
  
 
@@ -38,7 +38,7 @@ export class Navbar1Component implements OnInit {
     // search pipe
     this.us.getdatafromoutside().subscribe(
       res=>{
-        this.dataArray = res;
+        this.products = res;
       },
       err=>{
         this.toaster.error("Something went wrong in searching")

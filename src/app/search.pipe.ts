@@ -1,18 +1,19 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {HomecardsComponent} from '../app/homecards/homecards.component'
 
 @Pipe({
   name: 'search'
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(dataArray:any[],searchTerm:string): any[] {
+  transform(products:any[],searchTerm:String): any[] {
     if(!searchTerm){
-      return dataArray;
-    }
-    else
-    {
-      return dataArray.filter(dataObj=>dataObj.product.productname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1)
-    }
+       return products;
+     }
+     else
+     {
+      return products.filter(searchobj=>searchobj.productname.toLowerCase().indexOf(searchTerm.toLowerCase())!==-1)
+     }
+  }
   }
 
-}

@@ -51,6 +51,26 @@ export class UserService {
     return this.hc.get(`/user/getsingleuserprofiledetail/${username}`)
   }
 
+
+
+
+
+// increment and decrement
+updatetotal(i:any):Observable<any>{
+  console.log("iam updated quantity from service",i)
+return this.hc.put(`/cart/updatetotal/${localStorage.getItem("username")}`,i)
+}
+
+
+
+
+
+
+
+
+
+
+
 // -----------------------------CATEGORIES--------------------------
 // dals-pulses
 getdals():Observable<any>{
@@ -132,13 +152,13 @@ getCartSize(){
   return this.userCartSize;
 }
 getInitialCartSize(username):Observable<any>{
-  return this.hc.get(`/cart/getsize/${username}`)
+  return this.hc.get(`/cart/getcart/${username}`)
 }
 
 // delete product by id in user cart
-deleteprodfromcart(item):Observable<any>{
-  console.log("deleted item from service cart is here",item)
-return this.hc.post("/product/removeprodfromcart",item)
+deleteprodfromcart(cartObj):Observable<any>{
+  console.log("deleted item from service cart is here",cartObj)
+return this.hc.post("/cart/removeprodfromcart",cartObj)
 }
 
 cartsize=0;
@@ -152,13 +172,10 @@ private cartSubject: BehaviorSubject<any> = new BehaviorSubject(this.cartsize);
       this.cartSubject.next(cartsize);
   }
 
-// -------delete item mukesh
-  deleteItem(item:any):Observable<any>{
-return  this.hc.put("/product/deleteproduct",item)
-  }
-
-
-
+// -------delete item muk
+//   deleteItem(item:any):Observable<any>{
+// return  this.hc.put("/product/deleteproduct",item)
+//   }
 
 
 

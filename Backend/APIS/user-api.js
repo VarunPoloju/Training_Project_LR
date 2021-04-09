@@ -10,7 +10,8 @@ const validateToken = require('../Middlewares/VerifyToken')
 
 
 // model
-const User = require("../Models/User")
+const User = require("../Models/User");
+const Product = require("../Models/Product");
 
 
 //body parser middleware
@@ -63,7 +64,7 @@ userApiObj.post("/login",errorHandler(async (req,res,next)=>{
             res.send({message:"invalidpassword"})
         }
         else{
-            let token=await jwt.sign({username:user.username},"abcdef",{expiresIn:20})
+            let token=await jwt.sign({username:user.username},"abcdef",{expiresIn:5000})
             res.send({message:"success",username:user.username,token:token})
         }
     }
@@ -76,6 +77,24 @@ userApiObj.get("/getsingleuserprofiledetail/:username",validateToken,errorHandle
     delete singleUserObj.password;
     res.send({message:singleUserObj})
 }))
+
+
+
+// bkdjhdbchbskadjhcglikjdwchliK>jwCBVKIHSBDCkjdBWCIBJDBKCHBShwcbjhbdhSBChsdxfcgvhbjnkmxdfcgvhbjnkmldfcgvhb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // exporting userApiObj
