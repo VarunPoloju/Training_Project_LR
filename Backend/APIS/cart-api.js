@@ -77,8 +77,8 @@ cartApiObj.get("/getcart/:username", errorHandler(async (req, res, next) => {
 
 
 cartApiObj.put("/updatetotal/:username",errorHandler(async(req,res,next)=>{
-    console.log(req.body)
-    console.log(req.params.username)
+   // console.log(req.body)
+    //console.log(req.params.username)
          let count = await Cart.updateOne({$and:[{username:req.params.username},{productid:req.body.productid}]},{quantity:req.body.quantity,productprice:req.body.productprice})
          let success = await Cart.find({username:req.params.username})
          console.log("success is",success)

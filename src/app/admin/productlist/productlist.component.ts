@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastRef, ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/admin.service';
+import {SearchPipe} from '../../search.pipe'
 
 @Component({
   selector: 'app-productlist',
@@ -10,6 +11,7 @@ import { AdminService } from 'src/app/admin.service';
 export class ProductlistComponent implements OnInit {
   products=[];
   productsStatus:boolean=false;
+  searchTerm:string;
  
   constructor(private adminservice:AdminService,private toaster:ToastrService) { }
 

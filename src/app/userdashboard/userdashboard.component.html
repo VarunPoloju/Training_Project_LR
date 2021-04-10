@@ -41,8 +41,8 @@
    
         <div class="col-md-1">
             <div id="mySidenav" class="vertical-menu">
-                <a routerLink="myprofile" id="myprofile">My Profile</a>
-                <a routerLink="myaddress" id="myaddress">My Address</a>
+                <a routerLink="myprofile" id="myprofile">My Profile<i style="color: black;" class="fas fa-user-circle"></i></a>
+                <a routerLink="myaddress" style="width: max-content;" id="myaddress">My Address<i style="color: black;" class="far fa-address-card "></i></a>
                 <!-- <a routerLink="wishlist" id="readylist">Wish List</a> -->
                 <!-- <a routerLink="myorders" id="orders">My Orders</a> -->
               </div>
@@ -65,15 +65,16 @@
               
                 <img src={{product.productimage}} class="card-img-top  p-3 mx-auto"  style="cursor: pointer; height: 200px; width: 160px;"   alt="...">
                 <div class="card-body">
-               <a href="#" style="text-decoration: none; color: black;"> <h3 class="card-title text-center" style="font-family: 'Nanum Myeongjo', serif;">  {{product.productname }}    </h3> </a>     
+               <a href="#" style="text-decoration: none; color: black;"> <h3 class="card-title text-center" style="font-family: 'Lobster', cursive;">  {{product.productname }}    </h3> </a>     
                     <h5 class="card-title" >  <h6>MRP:  <i class="fas fa-rupee-sign"></i>{{product.productprice  }}</h6></h5>
   
-                    <!-- <h5 class="card-title">   <h6>Brand: {{product.productbrand | titlecase}}</h6></h5> -->
-                    <h5 class="card-title">   <h6>Description: {{product.productdescription | titlecase}}</h6></h5>
-                    
+                     <h5 class="card-title">   <h6>Brand: {{product.productbrand | titlecase}}</h6></h5>
+                     <h5 class="card-title">   <h6>Country of Origin: {{product.countryoforigin | titlecase}}</h6></h5>
+
+                 
                 </div>
                 <div class="btn btn-toolbar" style="justify-content: space-between;">
-                <button class="btn  m-2"  style="width: max-content; background-color: red; color: white; border-radius: 3px solid red; border:15px" (click)="gotoViewProduct(product.productid)"><i class="far fa-eye-slash"></i>View</button>
+                <button class="btn  m-2"  style="width: max-content; background-color: red; color: white; border-radius: 3px solid red; border:15px" (click)="gotoViewProduct(product.productid)"><i class="far fa-eye"></i>View</button>
                 <button class="btn  float-right m-2" style="width: max-content;background-color:darkblue; color: white; border-radius: 3px solid darkblue; border:15px"  (click)="addToCart(product)"><i class="fas fa-shopping-cart"></i>  Add to cart</button>
               </div>
             </div>

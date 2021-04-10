@@ -92,7 +92,7 @@ logoutuser(){
   
     //  --------------------------------------------------------------------------ADMIN--------------------------------
     //  for admin
-  if(usercredobj.person=="admin")
+  if(usercredobj.person=="admin" && usercredobj.password=="admin")
   {
   this.adminservice.adminLogin(usercredobj).subscribe(
     res=>{
